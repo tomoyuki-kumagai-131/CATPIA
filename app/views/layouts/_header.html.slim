@@ -1,0 +1,74 @@
+| div> 
+nav.navbar.navbar-expand.navbar-light.mb-3
+  = link_to Settings.view_utils[:website_name], root_path, class: "navbar-brand font-weight-bold d-none d-sm-block",
+  -                                            data: { "turbolinks" => false }
+  = link_to Settings.view_utils[:website_name], root_path, class: "navbar-brand title-min font-weight-bold d-block d-sm-none",
+  -                                            data: { "turbolinks" => false }
+  - if user_signed_in?
+    ul.navbar-nav.mr-auto.align-items-center
+      li.nav-item
+        - if user_avatar_valid?(current_user)
+          = link_to image_tag(current_user.avatar.url, size:"35x35",
+          -                                              class:"avatar-type-circle"), current_user, class:"nav-link nav-avatar"
+        - else
+          = link_to image_tag(asset_path("default.jpg"), size:"35x35",
+          -                                              class:"avatar-type-circle"), current_user, class:"nav-link nav-avatar"
+      li.nav-item.user-name.d-none.d-md-block
+        = link_to current_user.name, current_user, class:"nav-link"
+      li.nav-item.d-none.d-sm-block
+        = link_to users_path, class:"nav-link" do
+          i.fas.fa-users.fa-2x.fa-fw.d-none.d-sm-block
+    ul.navbar-nav.align-items-center
+      li.nav-item
+        = link_to new_micropost_path, class:"nav-link btn nav-btn" do
+          i.fas.fa-paper-plane.fa-2x.fa-fw
+      li.dropdown
+        a.btn.nav-btn.nav-link[href="#" data-toggle="dropdown"]
+          i.fas.fa-align-justify.fa-2x
+        ul.dropdown-menu.dropdown-menu-right
+          li.dropdown-item.nav-item
+            = link_to users_path, class:"d-block d-sm-none nav-link" do
+              i.fas.fa-users
+              span
+                |  
+                = Settings.link_utils[:serach_user]
+          - unless current_page?(root_path)
+            li.dropdown-item.nav-item
+              = link_to root_path, class:"nav-link" do
+                i.fas.fa-home
+                span
+                  |  
+                  = Settings.link_utils[:top]
+          - unless current_page?(current_user)
+            li.dropdown-item.nav-item
+              = link_to current_user, class:"nav-link" do
+                i.fas.fa-user
+                span
+                  |  
+                  = Settings.link_utils[:mypage]
+          li.dropdown-item.nav-item
+            = link_to destroy_user_session_path,method: :delete, data:{ confirm: Settings.messages[:logout_confirm] }, class:"nav-link" do
+              i.fas.fa-sign-out-alt
+              span
+                |  
+                = Settings.link_utils[:logout]
+          li.dropdown-item.nav-item
+            = link_to '/contact', class:"nav-link" do
+              i.fas.fa-phone-alt
+              span
+                |  
+                = Settings.link_utils[:contact]
+  - else
+    ul.navbar-nav.ml-auto.align-items-center
+      li.nav-item.d-none.d-sm-block
+        = link_to new_user_session_path, class:"nav-link" do
+          i.fas.fa-sign-in-alt
+          span
+            |  
+            = Settings.link_utils[:login]
+      li.nav-item.d-block.d-sm-none
+        = link_to new_user_session_path, class:"nav-link" do
+          i.fas.fa-sign-in-alt.fa-lg
+      li.nav-item
+        = link_to new_user_registration_path, class:"nav-link" do
+          i.fas.fa-user-plus.fa-lg

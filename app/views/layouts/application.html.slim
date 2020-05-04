@@ -2,10 +2,45 @@ doctype html
 html
   head
     title
-      | AppName
+      | FAVITEM
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    script[src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"]
+    script[src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"]
+    script[src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"]
+  
+  header
+
+  nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top
+    a.navbar-brand[href="#"]
+      | F A V I T E M
+    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarCollapse"]
+      span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link[href="#"]
+            | HOME 
+            span.sr-only
+              | (current)
+        li.nav-item
+          a.nav-link.active[href="#"]
+            | ABOUT
+        li.nav-item
+          a.nav-link.active[href="#"]
+            | SIGN UP
+      form.form-inline.mt-2.mt-md-0
+        input.form-control.mr-sm-2[type="text" placeholder="Search" aria-label="Search"]
+        button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
+          | Search
+
+      = yield
+  ul
+  .pricing-header.px-3.py-3.pt-md-5.pb-md-4.mx-auto.text-center
+    .display-2 FAVITEM
+    p.lead あなたのお気に入りのアイテムを紹介してみましょう。
+    li
+      = link_to "はじめる", "#", class: "btn btn-outline-dark"
