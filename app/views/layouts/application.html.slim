@@ -7,40 +7,115 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
+
   body
     script[src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"]
     script[src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"]
     script[src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"]
-  
+
   header
 
-  nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top
-    a.navbar-brand[href="#"]
-      | F A V I T E M
-    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarCollapse"]
-      span.navbar-toggler-icon
-    #navbarCollapse.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto
-        li.nav-item.active
-          a.nav-link[href="#"]
-            | HOME 
-            span.sr-only
-              | (current)
-        li.nav-item
-          a.nav-link.active[href="#"]
-            | ABOUT
-        li.nav-item
-          a.nav-link.active[href="#"]
-            | SIGN UP
-      form.form-inline.mt-2.mt-md-0
-        input.form-control.mr-sm-2[type="text" placeholder="Search" aria-label="Search"]
-        button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
-          | Search
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top
+      a.navbar-brand[href="#"]
+        | F A V I T E M
+      ul
+      button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarCollapse"]
+        span.navbar-toggler-icon
+      #navbarCollapse.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link[href="#"]
+              | HOME 
+              span.sr-only
+                | (current)
+          ul
+          li.nav-item
+            a.nav-link.active[href="#"]
+              | ABOUT
+          ul
+          li.nav-item
+            a.btn.btn-outline-info[href="#"]
+              | SIGN UP
+              
+        form.form-inline.mt-2.mt-md-0
+          input.form-control.mr-sm-2[type="text" placeholder="ねこを探す" aria-label="Search"]
+          button.btn.btn-outline-dark.my-2.my-sm-0[type="submit"]
+            | Search
 
-      = yield
+      
+    
+
+main[role="main"]
+  #myCarousel.carousel.slide[data-ride="carousel"]
+    ol.carousel-indicators
+      li.active[data-target="#myCarousel" data-slide-to="0"]
+      li[data-target="#myCarousel" data-slide-to="1"]
+      li[data-target="#myCarousel" data-slide-to="2"]
+    .carousel-inner
+      .carousel-item.active
+        img[src="top_sandal.jpg".alt="香水"]
+        svg.bd-placeholder-img[width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"]
+          rect[width="100%" height="100%" fill="#777"]
+        div
+          .carousel-caption
+            h1
+              | Example headline.
+            p
+              | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            p
+              a[href="#" role="button"]
+                | SIGN UP
+      .carousel-item
+        img[src="top_cat.jpg".alt="香水"]
+        svg.bd-placeholder-img[width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"]
+          rect[width="100%" height="100%" fill="#777"]
+        div
+          .carousel-caption
+            h1
+              | Another example headline.
+            p
+              | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            p
+              a[href="#" role="button"]
+                | Learn more
+      .carousel-item
+        img[src="top_cat2.jpg".alt="香水"]
+        svg.bd-placeholder-img[width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"]
+          rect[width="100%" height="100%" fill="#777"]
+        div
+          .carousel-caption
+            h1
+              | One more for good measure.
+            p
+              | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            p
+              a[href="#" role="button"]
+                | Browse gallery
+    a.carousel-control-prev[href="#myCarousel" role="button" data-slide="prev"]
+      span.carousel-control-prev-icon[aria-hidden="true"]
+      span.sr-only
+        | Previous
+    a.carousel-control-next[href="#myCarousel" role="button" data-slide="next"]
+      span.carousel-control-next-icon[aria-hidden="true"]
+      span.sr-only
+        | Next
   ul
-  .pricing-header.px-3.py-3.pt-md-5.pb-md-4.mx-auto.text-center
-    .display-2 FAVITEM
-    p.lead あなたのお気に入りのアイテムを紹介してみましょう。
-    li
-      = link_to "はじめる", "#", class: "btn btn-outline-dark"
+
+  .row
+  .col-sm-6.col-md-3
+    .card.img-thumbnail
+      img.card-img-top[src="hero_bg_1.jpg" alt="画像"]
+      .card-body.px-2.py-3
+        h5.card-title.text-center
+          | Jo Malone Blackberry & Bay
+        p.card-text
+  ul
+  .row
+  .col-sm-6.col-md-3
+    .card.img-thumbnail
+      img.card-img-top[src="hero_bg_1.jpg" alt="画像"]
+      .card-body.px-2.py-3
+        h5.card-title.text-center
+          | Jo Malone Blackberry & Bay
+        p.card-text
