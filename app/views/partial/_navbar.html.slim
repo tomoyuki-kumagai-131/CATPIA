@@ -1,26 +1,38 @@
-    nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top
-      a.navbar-brand[href="#"]
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top.border-bottom.shadow-sm
+      a.navbar-brand[href="/"]
         | C A T P I A
       ul
       button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarCollapse"]
         span.navbar-toggler-icon
       #navbarCollapse.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
-          li.nav-item.active
-            a.nav-link[href="#"]
+          li.nav-item.active.mt-3.my-2
+            a.nav-link[href="/"]
               | HOME 
               span.sr-only
                 | (current)
           ul
-          li.nav-item
-            a.nav-link.active[href="#"]
+          li.nav-item.mt-3.my-2
+            a.nav-link.active[href="/about/"]
               | ABOUT
           ul
-          li.nav-item
-            a.btn.btn-outline-info[href="#"]
-              | SIGN UP
-              
+          li.nav-item.mt-3.my-2
+            a.btn.btn-outline-info[href="/users/sign_up"]
+              |SIGN UP
+          ul
+          li.nav-item.mt-3.my-2
+            a.btn.btn-outline-danger[href="/users/sign_in"]
+              |LOG IN   
+          ul
+          li.nav-item.mt-3.my-2
+            a.btn.btn-outline-info[href="/posts/index"]
+              |みんなのねこ
+          ul
+          - if user_signed_in?
+            li.nav-item.mt-3.my-2.a.btn.btn-outline-dark
+              = link_to "SIGN OUT", destroy_user_session_path, method: :delete
+          
         form.form-inline.mt-2.mt-md-0
           input.form-control.mr-sm-2[type="text" placeholder="ねこを探す" aria-label="Search"]
-          button.btn.btn-outline-dark.my-2.my-sm-0[type="submit"]
+          button.btn.btn-outline-dark.my-3.my-sm-0[type="submit"]
             | Search
