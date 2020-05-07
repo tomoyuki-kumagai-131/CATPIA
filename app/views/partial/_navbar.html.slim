@@ -16,21 +16,33 @@
             a.nav-link.active[href="/about/"]
               | ABOUT
           ul
-          li.nav-item.mt-3.my-2
-            a.btn.btn-outline-info[href="/users/sign_up"]
-              |SIGN UP
-          ul
-          li.nav-item.mt-3.my-2
-            a.btn.btn-outline-warning[href="/users/sign_in"]
-              |LOG IN   
-          ul
-          li.nav-item.mt-3.my-2
-            a.btn.btn-outline-success[href="/posts/index"]
-              |みんなのねこ
-          ul
           - if user_signed_in?
+
             li.nav-item.mt-3.my-2.a.btn.btn-outline-dark
               = link_to "SIGN OUT", destroy_user_session_path, method: :delete
+            ul
+            li.nav-item.mt-3.my-2
+              a.btn.btn-outline-success[href="/posts/new"]
+                |投稿する
+            ul
+            li.nav-item.mt-3.my-2
+              a.btn.btn-outline-info[href="/users/:id"]
+                |MY PAGE
+            ul
+          - else    
+              li.nav-item.mt-3.my-2
+                a.btn.btn-outline-info[href="/users/sign_up"]
+                  |SIGN UP
+              ul
+              li.nav-item.mt-3.my-2
+                a.btn.btn-outline-warning[href="/users/sign_in"]
+                  |LOG IN   
+              ul
+              li.nav-item.mt-3.my-2
+                 a.btn.btn-outline-success[href="/posts/index"]
+                  |みんなのねこ
+              ul
+
           
         form.form-inline.mt-2.mt-md-0
           input.form-control.mr-sm-2[type="text" placeholder="ねこを探す" aria-label="Search"]
