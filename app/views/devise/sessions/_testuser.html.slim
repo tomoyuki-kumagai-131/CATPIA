@@ -1,0 +1,7 @@
+
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    =f.hidden_field :email ,value: "aaa@aaa"
+    =f.hidden_field :password ,value: "aaaaaa"
+  .actions
+    = f.submit "かんたんログイン", class: "btn btn-success w-100"

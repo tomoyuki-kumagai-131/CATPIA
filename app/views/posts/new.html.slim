@@ -1,6 +1,151 @@
-= form_with model: @post do |f|
-  = f.label :caption
-  = f.text_field :caption
-  = f.fields_for :photos do |i|
-    = i.file_field :image
-  = f.submit "投稿", class: "btn btn-primary"
+ul
+.container
+  h4.header.title.text-center
+    | セレクトショップを紹介しましょう。
+  p
+  .row
+    form#new_shop.new_shop[enctype="multipart/form-data" action="/posts" accept-charset="UTF-8" method="post"]
+      input[name="utf8" type="hidden" value="&#x2713;"]
+      input[type="hidden" name="authenticity_token" value="F2pppUL45ir2MwweGTrQH8UUneqVEE0DM0OZ7Q0Su/IdoIwk9Mm3S04rizkLcVhm3GC5m/gtbuYSyMHAshoAcw=="]
+      .file-field.col.s12.l3
+        img#img_prev[src="/public/noimage.png" alt="No image"]
+        input.file-path.validate[type="text"]
+        .btn.btn-primary
+          span
+            | 画像ファイルを選択する
+          input#user_img[type="file" name="shop[image]"]
+      .col.s12.m12.l7.right
+        .row
+          .input-field.col.s12
+            input#shop_name[placeholder="店名" autofocus="autofocus" type="text" name="shop[name]"]
+            label[for="shop_name"]
+              | 店名
+        .row
+          .input-field.col.s12
+            textarea#shop_text.materialize-textarea[placeholder="紹介文" name="shop[text]"]
+            p
+            label[for="shop_text"]
+              | 紹介文
+            p
+        .row
+          .input-field.col.s12
+            select#shop_prefecture_code[name="shop[prefecture_code]"]
+              option[value=""]
+                | 都道府県を選択してください
+              option[value="1"]
+                | 北海道
+              option[value="2"]
+                | 青森県
+              option[value="3"]
+                | 岩手県
+              option[value="4"]
+                | 宮城県
+              option[value="5"]
+                | 秋田県
+              option[value="6"]
+                | 山形県
+              option[value="7"]
+                | 福島県
+              option[value="8"]
+                | 茨城県
+              option[value="9"]
+                | 栃木県
+              option[value="10"]
+                | 群馬県
+              option[value="11"]
+                | 埼玉県
+              option[value="12"]
+                | 千葉県
+              option[value="13"]
+                | 東京都
+              option[value="14"]
+                | 神奈川県
+              option[value="15"]
+                | 新潟県
+              option[value="16"]
+                | 富山県
+              option[value="17"]
+                | 石川県
+              option[value="18"]
+                | 福井県
+              option[value="19"]
+                | 山梨県
+              option[value="20"]
+                | 長野県
+              option[value="21"]
+                | 岐阜県
+              option[value="22"]
+                | 静岡県
+              option[value="23"]
+                | 愛知県
+              option[value="24"]
+                | 三重県
+              option[value="25"]
+                | 滋賀県
+              option[value="26"]
+                | 京都府
+              option[value="27"]
+                | 大阪府
+              option[value="28"]
+                | 兵庫県
+              option[value="29"]
+                | 奈良県
+              option[value="30"]
+                | 和歌山県
+              option[value="31"]
+                | 鳥取県
+              option[value="32"]
+                | 島根県
+              option[value="33"]
+                | 岡山県
+              option[value="34"]
+                | 広島県
+              option[value="35"]
+                | 山口県
+              option[value="36"]
+                | 徳島県
+              option[value="37"]
+                | 香川県
+              option[value="38"]
+                | 愛媛県
+              option[value="39"]
+                | 高知県
+              option[value="40"]
+                | 福岡県
+              option[value="41"]
+                | 佐賀県
+              option[value="42"]
+                | 長崎県
+              option[value="43"]
+                | 熊本県
+              option[value="44"]
+                | 大分県
+              option[value="45"]
+                | 宮崎県
+              option[value="46"]
+                | 鹿児島県
+              option[value="47"]
+                | 沖縄県
+            label[for="shop_prefecture_code"]
+              | 都道府県
+        .row
+          .input-field.col.s12
+            input#shop_address[placeholder="住所" type="text" name="shop[address]"]
+            label[for="shop_address"]
+              | 住所
+        .row.radio
+          .col.s12.radio_col
+            label
+              span.list
+                | Wifi
+              i.material-icons.small
+                | wifi
+              input#shop_wifi_yes.with-gap[type="radio" value="yes" name="shop[wifi]"]
+              span
+                | 有
+            label
+              input#shop_wifi_no.with-gap[type="radio" value="no" name="shop[wifi]"]
+              span
+                | 無
+        input.btn.btn-primary.right[type="submit" name="commit" value="投稿" data-disable-with="投稿"]
+    .input-field.col.s12.m12.l4[style="padding-top: 50px;"]

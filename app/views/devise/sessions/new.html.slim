@@ -10,8 +10,24 @@
         .form-group
           = f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control"
         .actions
-          = f.submit "ログイン", class: "btn btn-primary w-100"
-      br
-      p.devise-link
-        |  まだ登録していない方はこちらへ  →   
-        = link_to "登録する", new_user_registration_path
+          = f.submit "ログイン", class: "btn btn-success w-100"
+          form.mt-3[method="POST" action=""]
+        br
+          = render 'devise/sessions/testuser'
+        
+      p  
+      button.btn.btn-block.btn-danger[type="submit"]
+       i.fab.fa-google.mr-1
+       | Googleでログイン 
+      form.mt-3[method="POST" action=""]
+        button.btn.btn-block.btn-info[type="submit"]
+          i.fab.fa-twitter.mr-1
+          | Twitterでログイン 
+      form.mt-3[method="POST" action=""]
+        button.btn.btn-block.btn-primary[type="submit"]
+          i.fab.fa-facebook-f.mr-1
+          | Facebookでログイン 
+          br
+        p.devise-link
+          |  まだ登録していない方はこちらへ  →   
+          = link_to "登録する", new_user_registration_path
