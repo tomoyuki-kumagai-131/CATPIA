@@ -1,6 +1,6 @@
     nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top.border-bottom.shadow-sm
       a.navbar-brand[href="/"]
-        | C A T P I A
+        | S E L E B E
       ul
       button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarCollapse"]
         span.navbar-toggler-icon
@@ -15,16 +15,24 @@
           li.nav-item.mt-3.my-2
             a.nav-link.active[href="/about/"]
               | ABOUT
+
+          ul
+          li.nav-item.mt-3.my-2
+            a.nav-link.active[href="/posts/"]
+              | SHOP'S
+
           ul
           - if user_signed_in?
 
+            li.nav-item.mt-3.my-2
+              a.btn.btn-outline-success[href="/posts/new"]
+                |投稿
+            ul
+						
             li.nav-item.mt-3.my-2.a.btn.btn-outline-dark
               = link_to "SIGN OUT", destroy_user_session_path, method: :delete
             ul
-            li.nav-item.mt-3.my-2
-              a.btn.btn-outline-success[href="/posts/new"]
-                |投稿する
-            ul
+
             li.nav-item.mt-3.my-2
               a.btn.btn-outline-info[href="/users/:id"]
                 |MY PAGE
@@ -38,13 +46,8 @@
                 a.btn.btn-outline-warning[href="/users/sign_in"]
                   |LOG IN   
               ul
-              li.nav-item.mt-3.my-2
-                 a.btn.btn-outline-success[href="/posts/index"]
-                  |みんなのねこ
-              ul
-
           
         form.form-inline.mt-2.mt-md-0
-          input.form-control.mr-sm-2[type="text" placeholder="ねこを探す" aria-label="Search"]
+          input.form-control.mr-sm-2[type="text" placeholder="お店を探す" aria-label="Search"]
           button.btn.btn-outline-dark.my-3.my-sm-0[type="submit"]
             | Search

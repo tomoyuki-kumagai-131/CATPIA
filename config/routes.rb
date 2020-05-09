@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/about' => 'static_pages#about'
   
-  resources :posts, only: %i(new create) do
+  resources :posts, only: %i(new create index) do
     resources :photos, only: %i(create)
   end
   
